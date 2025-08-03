@@ -69,19 +69,27 @@ download_model_HF_GGUF() {
     local model_var="$1"
     local file_var="$2"
 
-    if [[ -n "${!model_var}" && -n "${!file_var}" ]]; then
-        hf download "${!model_var}" "${!file_var}" --local-dir "/workspace/text-generation-webui/user_data/models/"
-		sleep 1
+    local model="${!model_var}"
+    local file="${!file_var}"
+
+    if [[ -n "$model" && -n "$file" ]]; then
+        echo "[INFO] Downloading GGUF model: $model ($file)"
+        hf download "$model" "$file" --local-dir "/workspace/text-generation-webui/user_data/models/"
+        sleep 1
     fi
 }
 
 download_model_HF() {
     local model_var="$1"
-    local dest_dir="$2"
+    local dest_dir_var="$2"
 
-    if [[ -n "${!model_var}" && -n "${!dest_dir}"]]; then
-        hf download "${!model_var}" --local-dir "/workspace/text-generation-webui/user_data/models/$dest_dir/"
-		sleep 1
+    local model="${!model_var}"
+    local dest_dir="${!dest_dir_var}"
+
+    if [[ -n "$model" && -n "$dest_dir" ]]; then
+        echo "[INFO] Downloading model: $model -> $dest_dir"
+        hf download "$model" --local-dir "/workspace/text-generation-webui/user_data/models/$dest_dir/"
+        sleep 1
     fi
 }
 
@@ -90,13 +98,13 @@ echo "[INFO] Provisioning started"
 for i in {1..6}; do
     model_var="HF_MODEL_GGUF${i}"
     file_var="HF_MODEL_GGUF_FILE${i}"
-    download_model_HF_GGUF "${!model_var}" "${!file_var}"
+    download_model_HF_GGUF "$model_var" "$file_var"
 done
 
 for i in {1..6}; do
     model_var="HF_MODEL${i}"
     dir_var="HF_MODEL_DIR${i}"
-    download_model_HF "${!model_var}" "${!dir_var}"
+    download_model_HF "$model_var" "$dir_var"
 done
 
 echo "[INFO] Provisioning completed."
