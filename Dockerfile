@@ -5,7 +5,7 @@ FROM ls250824/pytorch-cuda-ubuntu-runtime:05072025 AS base
 WORKDIR /
 
 # Copy scripts and make them executable
-COPY --chmod=755 start.sh onworkspace/text-generation-webui-workspace.sh onworkspace/provisioning-on-workspace.sh onworkspace/readme-on-workspace.sh /
+COPY --chmod=755 start.sh onworkspace/text-generation-webui-on-workspace.sh onworkspace/provisioning-on-workspace.sh onworkspace/readme-on-workspace.sh /
 
 # Copy documentation with appropriate permissions
 COPY --chmod=644 documentation/README_runpod.md /README.md

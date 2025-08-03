@@ -16,7 +16,7 @@ then
 fi
 
 # Move necessary files to workspace
-for script in text-generation-webui-workspace.sh provisioning-on-workspace.sh readme-on-workspace.sh; do
+for script in text-generation-webui-on-workspace.sh provisioning-on-workspace.sh readme-on-workspace.sh; do
     if [ -f "/$script" ]; then
         echo "Executing $script..."
         "/$script"
