@@ -12,7 +12,7 @@ then
     echo $PUBLIC_KEY >> authorized_keys
     chmod 700 -R ~/.ssh
     cd /
-    service ssh start
+    service ssh start 
 fi
 
 # Move necessary files to workspace
@@ -21,15 +21,15 @@ for script in text-generation-webui-on-workspace.sh provisioning-on-workspace.sh
         echo "Executing $script..."
         "/$script"
     else
-        echo "[WARNING]: Skipping $script (not found)"
+        echo "⚠️ WARNING: Skipping $script (not found)"
     fi
 done
 
 # Login to Hugging Face if token is provided
 if [[ -n "$HF_TOKEN" ]]; then
-    hf login --token "$HF_TOKEN"
+    hf auth login --token "$HF_TOKEN"
 else
-	echo "[WARNING]: HF_TOKEN is not set as an environment variable"
+	echo "⚠️ WARNING: HF_TOKEN is not set as an environment variable"
 fi
 
 # Start services
@@ -38,7 +38,7 @@ if [[ ${RUNPOD_GPU_COUNT:-0} -gt 0 ]]; then
     if [[ -n "$PASSWORD" ]]; then
         code-server /workspace --auth password --disable-telemetry --host 0.0.0.0 --bind-addr 0.0.0.0:9000 &
     else
-        echo "[WARNING]: PASSWORD is not set as an environment variable"
+        echo "⚠️ WARNING: PASSWORD is not set as an environment variable"
         code-server /workspace --disable-telemetry --host 0.0.0.0 --bind-addr 0.0.0.0:9000 &
     fi
 	
@@ -48,9 +48,9 @@ if [[ ${RUNPOD_GPU_COUNT:-0} -gt 0 ]]; then
 	cd /workspace/text-generation-webui/
 	
 	if [[ -n "$GRADIO_AUTH" ]]; then
-       python3 server.py --gradio-auth "$GRADIO_AUTH" --listen
+       python3 server.py --gradio-auth "$GRADIO_AUTH" --listen &
 	else
-	   echo "[WARNING]: GRADIO_AUTH (user:password) is not set as an environment variable"
+	   echo "⚠️ WARNING: GRADIO_AUTH (user:password) is not set as an environment variable"
 	   python3 server.py --listen
 	fi
 	
@@ -60,7 +60,7 @@ if [[ ${RUNPOD_GPU_COUNT:-0} -gt 0 ]]; then
 	echo "[INFO] Code Server & text-generation-webui started"
 	
 else
-    echo "[WARNING]: No GPU available, text-generation-webui, Code Server not started to limit memory use"
+    echo "⚠️ WARNING: No GPU available, text-generation-webui, Code Server not started to limit memory use"
 fi
 
 # Function to download models if variables are set
@@ -107,7 +107,7 @@ for i in {1..6}; do
     download_model_HF "$model_var" "$dir_var"
 done
 
-echo "[INFO] Provisioning completed."
+echo "✅ Provisioning completed."
 
 # Keep the container running
 exec sleep infinity
