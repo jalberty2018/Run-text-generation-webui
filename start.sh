@@ -48,10 +48,10 @@ if [[ ${RUNPOD_GPU_COUNT:-0} -gt 0 ]]; then
 	cd /workspace/text-generation-webui/
 	
 	if [[ -n "$GRADIO_AUTH" ]]; then
-       python3 server.py --gradio-auth "$GRADIO_AUTH" --listen &
+       python3 server.py --flash-attn --gradio-auth "$GRADIO_AUTH" --listen &
 	else
 	   echo "⚠️ WARNING: GRADIO_AUTH (user:password) is not set as an environment variable"
-	   python3 server.py --listen
+	   python3 server.py --flash-attn --listen &
 	fi
 	
 	sleep 5

@@ -1,4 +1,6 @@
-# Diffusors
+# Manual provisioning also possible from within the program
+
+## Diffusors
 
 - [darkidol](https://huggingface.co/aifeifei798/DarkIdol-Llama-3.1-8B-Instruct-1.2-Uncensored)
 

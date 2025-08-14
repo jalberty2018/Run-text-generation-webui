@@ -21,7 +21,7 @@ See below for options.
 - **Recommended GPUs**: Nvidia RTX A4500, A40
 - **Storage**:  
   - **Volume**: 80GB (`/workspace`)  
-  - **Pod Volume**: 10Gb  
+  - **Pod Volume**: 15Gb  
 
 ## Available Images
 
