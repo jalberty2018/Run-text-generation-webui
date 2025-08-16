@@ -1,11 +1,8 @@
-[![Docker Image Version](https://img.shields.io/docker/v/ls250824/run-text-generation-webui)](https://hub.docker.com/r/ls250824/run-text-generation-webui)
-
 # Run text-generation-webui on [RunPod.io](https://runpod.io?ref=se4tkc5o)
 
-## Synopsis
+[![Docker Image Version](https://img.shields.io/docker/v/ls250824/run-text-generation-webui)](https://hub.docker.com/r/ls250824/run-text-generation-webui)
 
-A streamlined setup for running **text-generation-webui**.  
-This pod downloads models as specified in the **environment variables**
+## This pod downloads models as specified in the **environment variables**
 
 - Models are automatically downloaded based on the specified paths in the environment configuration.  
 - Authentication credentials can be set via secrets for:  
@@ -13,8 +10,9 @@ This pod downloads models as specified in the **environment variables**
   - **Hugging Face** tokens for model access.
   - **text-generation-webui** gradio authentication.  
 
-Ensure that the required environment variables and secrets are correctly set before running the pod.
-See below for options.
+## 📦 Template Deployment
+
+👉 [**One-click Deploy on RunPod**](https://console.runpod.io/deploy?template=u62v7rqcqw&ref=se4tkc5o)
 
 ## Hardware Requirements  
  
@@ -41,33 +39,33 @@ docker pull ls250824/run-text-generation-webui:<version>
 
 ### **Authentication Tokens**  
 
-| Token        | Environment Variable | Example |
-|--------------|----------------------|---------|
-| Huggingface  | `HF_TOKEN`           | token |
-| Code Server  | `PASSWORD`           | password |
-| Gradio       | `GRADIO_AUTH`        | user:password |
+| Token        | Environment Variable | Example | Required |
+|--------------|----------------------|---------|----------|
+| Hugging face  | `HF_TOKEN`           | token | ✅ Yes |
+| Code Server  | `PASSWORD`           | password | Optional |
+| text-generation-webui       | `GRADIO_AUTH`        | user:password | Optional |
 
 ## 📦 **GGUF Model Downloads**
 
-| #  | Model Type     | Hugging Face URL Variable | GGUF File Variable       |
-|----|----------------|---------------------------|---------------------------|
-| 1  | GGUF Model     | `HF_MODEL_GGUF1`          | `HF_MODEL_GGUF_FILE1`     |
-| 2  | GGUF Model     | `HF_MODEL_GGUF2`          | `HF_MODEL_GGUF_FILE2`     |
-| 3  | GGUF Model     | `HF_MODEL_GGUF3`          | `HF_MODEL_GGUF_FILE3`     |
-| 4  | GGUF Model     | `HF_MODEL_GGUF4`          | `HF_MODEL_GGUF_FILE4`     |
-| 5  | GGUF Model     | `HF_MODEL_GGUF5`          | `HF_MODEL_GGUF_FILE5`     |
-| 6  | GGUF Model     | `HF_MODEL_GGUF6`          | `HF_MODEL_GGUF_FILE6`     |
+| Model Type     | Hugging Face URL Variable | GGUF File Variable       |
+|----------------|---------------------------|---------------------------|
+| GGUF Model     | `HF_MODEL_GGUF1`          | `HF_MODEL_GGUF_FILE1`     |
+| GGUF Model     | `HF_MODEL_GGUF2`          | `HF_MODEL_GGUF_FILE2`     |
+| GGUF Model     | `HF_MODEL_GGUF3`          | `HF_MODEL_GGUF_FILE3`     |
+| GGUF Model     | `HF_MODEL_GGUF4`          | `HF_MODEL_GGUF_FILE4`     |
+| GGUF Model     | `HF_MODEL_GGUF5`          | `HF_MODEL_GGUF_FILE5`     |
+| GGUF Model     | `HF_MODEL_GGUF6`          | `HF_MODEL_GGUF_FILE6`     |
 
 ## 🤖 **Transformers & EXL2 Model Downloads**
 
-| #  | Model Type              | Hugging Face URL Variable | Destination Subfolder Variable |
-|----|-------------------------|----------------------------|----------------------------------|
-| 1  | Transformers / EXL2    | `HF_MODEL1`                | `HF_MODEL_DIR1`                 |
-| 2  | Transformers / EXL2    | `HF_MODEL2`                | `HF_MODEL_DIR2`                 |
-| 3  | Transformers / EXL2    | `HF_MODEL3`                | `HF_MODEL_DIR3`                 |
-| 4  | Transformers / EXL2    | `HF_MODEL4`                | `HF_MODEL_DIR4`                 |
-| 5  | Transformers / EXL2    | `HF_MODEL5`                | `HF_MODEL_DIR5`                 |
-| 6  | Transformers / EXL2    | `HF_MODEL6`                | `HF_MODEL_DIR6`                 |
+| Model Type              | Hugging Face URL Variable | Destination Subfolder Variable |
+|-------------------------|----------------------------|----------------------------------|
+| Transformers / EXL2    | `HF_MODEL1`                | `HF_MODEL_DIR1`                 |
+| Transformers / EXL2    | `HF_MODEL2`                | `HF_MODEL_DIR2`                 |
+| Transformers / EXL2    | `HF_MODEL3`                | `HF_MODEL_DIR3`                 |
+| Transformers / EXL2    | `HF_MODEL4`                | `HF_MODEL_DIR4`                 |
+| Transformers / EXL2    | `HF_MODEL5`                | `HF_MODEL_DIR5`                 |
+| Transformers / EXL2    | `HF_MODEL6`                | `HF_MODEL_DIR6`                 |
 
 ## Connection options 
 

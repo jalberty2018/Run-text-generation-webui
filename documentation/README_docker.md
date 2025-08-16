@@ -2,19 +2,13 @@
 
 # Run text-generation-webui on [RunPod.io](https://runpod.io?ref=se4tkc5o)
 
-## Synopsis
-
-A streamlined setup for running **text-generation-webui**.  
-This pod downloads models as specified in the **environment variables**
+## This pod downloads models as specified in the **environment variables**
 
 - Models are automatically downloaded based on the specified paths in the environment configuration.  
 - Authentication credentials can be set via secrets for:  
   - **Code server** authentication (not possible to switch off). 
   - **Hugging Face** tokens for model access.
   - **text-generation-webui** gradio authentication.  
-
-Ensure that the required environment variables and secrets are correctly set before running the pod.
-See below for options.
 
 ## Hardware Requirements  
  
@@ -41,11 +35,12 @@ docker pull ls250824/run-text-generation-webui:<version>
 
 ### **Authentication Tokens**  
 
-| Token        | Environment Variable | Example |
-|--------------|----------------------|---------|
-| Huggingface  | `HF_TOKEN`           | token |
-| Code Server  | `PASSWORD`           | password |
-| Gradio       | `GRADIO_AUTH`        | user:password |
+| Token        | Environment Variable | Example | Required |
+|--------------|----------------------|---------|----------|
+| Hugging face  | `HF_TOKEN`           | token | ✅ Yes |
+| Code Server  | `PASSWORD`           | password | Optional |
+| text-generation-webui       | `GRADIO_AUTH`        | user:password | Optional |
+
 
 ## 📦 **GGUF Model Downloads**
 
