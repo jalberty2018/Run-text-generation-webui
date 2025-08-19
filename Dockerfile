@@ -25,6 +25,9 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh
 # Set workspace directory
 WORKDIR /workspace
 
+# Cache directory for Hugging Face
+ENV HF_HOME=/workspace/cache
+
 # Expose ports for Gradio, code-server
 EXPOSE 7860 9000 
 

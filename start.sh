@@ -48,10 +48,10 @@ if [[ ${RUNPOD_GPU_COUNT:-0} -gt 0 ]]; then
 	cd /workspace/text-generation-webui/
 	
 	if [[ -n "$GRADIO_AUTH" ]]; then
-       python3 server.py --flash-attn --gradio-auth "$GRADIO_AUTH" --listen &
+       NVIDIA_VISIBLE_DEVICES=0 CUDA_VISIBLE_DEVICES=0 python3 server.py --gradio-auth "$GRADIO_AUTH" --listen &
 	else
 	   echo "⚠️ WARNING: GRADIO_AUTH (user:password) is not set as an environment variable"
-	   python3 server.py --flash-attn --listen &
+	   NVIDIA_VISIBLE_DEVICES=0 CUDA_VISIBLE_DEVICES=0 python3 server.py --listen &
 	fi
 	
 	sleep 5
@@ -79,6 +79,20 @@ download_model_HF_GGUF() {
     fi
 }
 
+download_mmproj_HF_GGUF() {
+    local model_var="$1"
+    local file_var="$2"
+
+    local model="${!model_var}"
+    local file="${!file_var}"
+
+    if [[ -n "$model" && -n "$file" ]]; then
+        echo "[INFO] Downloading GGUF mmproj: $model ($file)"
+        hf download "$model" "$file" --local-dir "/workspace/text-generation-webui/user_data/mmproj/"
+        sleep 1
+    fi
+}
+
 download_model_HF() {
     local model_var="$1"
     local dest_dir_var="$2"
@@ -99,6 +113,12 @@ for i in {1..6}; do
     model_var="HF_MODEL_GGUF${i}"
     file_var="HF_MODEL_GGUF_FILE${i}"
     download_model_HF_GGUF "$model_var" "$file_var"
+done
+
+for i in {1..6}; do
+    model_var="HF_MMPROJ_GGUF${i}"
+    file_var="HF_MMPROJ_GGUF_FILE${i}"
+    download_mmproj_HF_GGUF "$model_var" "$file_var"
 done
 
 for i in {1..6}; do

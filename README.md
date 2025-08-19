@@ -56,6 +56,17 @@ docker pull ls250824/run-text-generation-webui:<version>
 | GGUF Model     | `HF_MODEL_GGUF5`          | `HF_MODEL_GGUF_FILE5`     |
 | GGUF Model     | `HF_MODEL_GGUF6`          | `HF_MODEL_GGUF_FILE6`     |
 
+## 📦 **MMPROJ Downloads (multi modality)**
+
+| Model Type     | Hugging Face URL Variable | GGUF File Variable       |
+|----------------|---------------------------|---------------------------|
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF1`          | `HF_MODEL_MMPROJ_FILE1`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF2`          | `HF_MODEL_MMPROJ_FILE2`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF3`          | `HF_MODEL_MMPROJ_FILE3`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF4`          | `HF_MODEL_MMPROJ_FILE4`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF5`          | `HF_MODEL_MMPROJ_FILE5`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF6`          | `HF_MODEL_MMPROJ_FILE6`     |
+
 ## 🤖 **Transformers & EXL2 Model Downloads**
 
 | Model Type              | Hugging Face URL Variable | Destination Subfolder Variable |
@@ -85,6 +96,7 @@ docker pull ls250824/run-text-generation-webui:<version>
 
 - [Code server](https://github.com/coder/code-server)
 - [text-generation-webui](https://github.com/oobabooga/text-generation-webui)
+- [Multi modality](https://github.com/oobabooga/text-generation-webui/wiki/Multimodal-Tutorial)
 
 ## Manual provisioning
 

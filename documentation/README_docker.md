@@ -44,25 +44,36 @@ docker pull ls250824/run-text-generation-webui:<version>
 
 ## 📦 **GGUF Model Downloads**
 
-| #  | Model Type     | Hugging Face URL Variable | GGUF File Variable       |
-|----|----------------|---------------------------|---------------------------|
-| 1  | GGUF Model     | `HF_MODEL_GGUF1`          | `HF_MODEL_GGUF_FILE1`     |
-| 2  | GGUF Model     | `HF_MODEL_GGUF2`          | `HF_MODEL_GGUF_FILE2`     |
-| 3  | GGUF Model     | `HF_MODEL_GGUF3`          | `HF_MODEL_GGUF_FILE3`     |
-| 4  | GGUF Model     | `HF_MODEL_GGUF4`          | `HF_MODEL_GGUF_FILE4`     |
-| 5  | GGUF Model     | `HF_MODEL_GGUF5`          | `HF_MODEL_GGUF_FILE5`     |
-| 6  | GGUF Model     | `HF_MODEL_GGUF6`          | `HF_MODEL_GGUF_FILE6`     |
+| Model Type     | Hugging Face URL Variable | GGUF File Variable       |
+|----------------|---------------------------|---------------------------|
+| GGUF Model     | `HF_MODEL_GGUF1`          | `HF_MODEL_GGUF_FILE1`     |
+| GGUF Model     | `HF_MODEL_GGUF2`          | `HF_MODEL_GGUF_FILE2`     |
+| GGUF Model     | `HF_MODEL_GGUF3`          | `HF_MODEL_GGUF_FILE3`     |
+| GGUF Model     | `HF_MODEL_GGUF4`          | `HF_MODEL_GGUF_FILE4`     |
+| GGUF Model     | `HF_MODEL_GGUF5`          | `HF_MODEL_GGUF_FILE5`     |
+| GGUF Model     | `HF_MODEL_GGUF6`          | `HF_MODEL_GGUF_FILE6`     |
+
+## 📦 **MMPROJ Downloads (multi modality)**
+
+| Model Type     | Hugging Face URL Variable | GGUF File Variable       |
+|----------------|---------------------------|---------------------------|
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF1`          | `HF_MODEL_MMPROJ_FILE1`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF2`          | `HF_MODEL_MMPROJ_FILE2`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF3`          | `HF_MODEL_MMPROJ_FILE3`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF4`          | `HF_MODEL_MMPROJ_FILE4`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF5`          | `HF_MODEL_MMPROJ_FILE5`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF6`          | `HF_MODEL_MMPROJ_FILE6`     |
 
 ## 🤖 **Transformers & EXL2 Model Downloads**
 
-| #  | Model Type              | Hugging Face URL Variable | Destination Subfolder Variable |
-|----|-------------------------|----------------------------|----------------------------------|
-| 1  | Transformers / EXL2    | `HF_MODEL1`                | `HF_MODEL_DIR1`                 |
-| 2  | Transformers / EXL2    | `HF_MODEL2`                | `HF_MODEL_DIR2`                 |
-| 3  | Transformers / EXL2    | `HF_MODEL3`                | `HF_MODEL_DIR3`                 |
-| 4  | Transformers / EXL2    | `HF_MODEL4`                | `HF_MODEL_DIR4`                 |
-| 5  | Transformers / EXL2    | `HF_MODEL5`                | `HF_MODEL_DIR5`                 |
-| 6  | Transformers / EXL2    | `HF_MODEL6`                | `HF_MODEL_DIR6`                 |
+| Model Type              | Hugging Face URL Variable | Destination Subfolder Variable |
+|-------------------------|----------------------------|----------------------------------|
+| Transformers / EXL2    | `HF_MODEL1`                | `HF_MODEL_DIR1`                 |
+| Transformers / EXL2    | `HF_MODEL2`                | `HF_MODEL_DIR2`                 |
+| Transformers / EXL2    | `HF_MODEL3`                | `HF_MODEL_DIR3`                 |
+| Transformers / EXL2    | `HF_MODEL4`                | `HF_MODEL_DIR4`                 |
+| Transformers / EXL2    | `HF_MODEL5`                | `HF_MODEL_DIR5`                 |
+| Transformers / EXL2    | `HF_MODEL6`                | `HF_MODEL_DIR6`                 |
 
 ## Connection options 
 
@@ -82,3 +93,4 @@ docker pull ls250824/run-text-generation-webui:<version>
 
 - [Code server](https://github.com/coder/code-server)
 - [text-generation-webui](https://github.com/oobabooga/text-generation-webui)
+- [Multi modality](https://github.com/oobabooga/text-generation-webui/wiki/Multimodal-Tutorial)
