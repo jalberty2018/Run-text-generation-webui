@@ -13,7 +13,7 @@
 - **Recommended GPUs**: Nvidia RTX A4500, A40
 - **Storage**:  
   - **Volume**: 80GB (`/workspace`)  
-  - **Pod Volume**: 15Gb  
+  - **Pod Volume**: 5Gb  
   
 ## Environment Variables  
 
@@ -40,23 +40,34 @@
 
 | Model Type     | Hugging Face URL Variable | GGUF File Variable       |
 |----------------|---------------------------|---------------------------|
-| GGUF MMPROJ     | `HF_MMPROJ_GGUF1`          | `HF_MODEL_MMPROJ_GGUF_FILE1`     |
-| GGUF MMPROJ     | `HF_MMPROJ_GGUF2`          | `HF_MODEL_MMPROJ_GGUF_FILE2`     |
-| GGUF MMPROJ     | `HF_MMPROJ_GGUF3`          | `HF_MODEL_MMPROJ_GGUF_FILE3`     |
-| GGUF MMPROJ     | `HF_MMPROJ_GGUF4`          | `HF_MODEL_MMPROJ_GGUF_FILE4`     |
-| GGUF MMPROJ     | `HF_MMPROJ_GGUF5`          | `HF_MODEL_MMPROJ_GGUF_FILE5`     |
-| GGUF MMPROJ     | `HF_MMPROJ_GGUF6`          | `HF_MODEL_MMPROJ_GGUF_FILE6`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF1`          | `HF_MMPROJ_GGUF_FILE1`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF2`          | `HF_MMPROJ_GGUF_FILE2`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF3`          | `HF_MMPROJ_GGUF_FILE3`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF4`          | `HF_MMPROJ_GGUF_FILE4`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF5`          | `HF_MMPROJ_GGUF_FILE5`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF6`          | `HF_MMPROJ_GGUF_FILE6`     |
 
-## 🤖 **Transformers & EXL2 Model Downloads**
+## 🤖 **Transformers Model Downloads**
 
 | Model Type              | Hugging Face URL Variable | Destination Subfolder Variable |
 |-------------------------|----------------------------|----------------------------------|
-| Transformers / EXL2    | `HF_MODEL1`                | `HF_MODEL_DIR1`                 |
-| Transformers / EXL2    | `HF_MODEL2`                | `HF_MODEL_DIR2`                 |
-| Transformers / EXL2    | `HF_MODEL3`                | `HF_MODEL_DIR3`                 |
-| Transformers / EXL2    | `HF_MODEL4`                | `HF_MODEL_DIR4`                 |
-| Transformers / EXL2    | `HF_MODEL5`                | `HF_MODEL_DIR5`                 |
-| Transformers / EXL2    | `HF_MODEL6`                | `HF_MODEL_DIR6`                 |
+| Transformers   | `HF_MODEL1`                | `HF_MODEL_DIR1`                 |
+| Transformers   | `HF_MODEL2`                | `HF_MODEL_DIR2`                 |
+| Transformers   | `HF_MODEL3`                | `HF_MODEL_DIR3`                 |
+| Transformers   | `HF_MODEL4`                | `HF_MODEL_DIR4`                 |
+| Transformers   | `HF_MODEL5`                | `HF_MODEL_DIR5`                 |
+| Transformers   | `HF_MODEL6`                | `HF_MODEL_DIR6`                 |
+
+## 🤖 **EXL Model Downloads**
+
+| Model Type            |    Hugging Face URL Variable | Revision | Destination Subfolder Variable |
+|-------------------------|----------|------------------|----------------------------------|
+| EXL    | `HF_EXL1`  |  `HF_EXL_REVISION1`  |  `HF_EXL_DIR1`                 |
+| EXL    | `HF_EXL2`  |  `HF_EXL_REVISION2`  |  `HF_EXL_DIR2`                 |
+| EXL    | `HF_EXL3`  |  `HF_EXL_REVISION3`  |  `HF_EXL_DIR3`                 |
+| EXL    | `HF_EXL4`  |  `HF_EXL_REVISION4`  |  `HF_EXL_DIR4`                 |
+| EXL    | `HF_EXL5`  |  `HF_EXL_REVISION5`  |  `HF_EXL_DIR5`                 |
+| EXL    | `HF_EXL6`  |  `HF_EXL_REVISION6`  |  `HF_EXL_DIR6`                 |
 
 ## Connection options 
 

@@ -1,4 +1,4 @@
-# Manual provisioning also possible from within the program
+# Manual provisioning
 
 ## GGUF
 
@@ -14,14 +14,27 @@ hf download saukko/Abliterated-Dolphin3.0-R1-Mistral-24B-GGUF Abliterated-Dolphi
 hf download DavidAU/Llama-3.2-8X3B-MOE-Dark-Champion-Instruct-uncensored-abliterated-18.4B-GGUF L3.2-8X3B-MOE-Dark-Champion-Inst-18.4B-uncen-ablit_D_AU-Q8_0.gguf --local-dir=/workspace/text-generation-webui/user_data/models/
 ```
 
-## Vision Models (llama.cpp/mmproj/gguf)
+- [Daredevil 8b albliturated](https://huggingface.co/mlabonne/Daredevil-8B-abliterated)
 
-- [Gemma abliturated](https://huggingface.co/mlabonne/gemma-3-27b-it-abliterated-GGUF)
+```bash
+hf download mlabonne/Daredevil-8B-abliterated-GGUF daredevil-8b-abliterated.Q8_0.gguf --local-dir=/workspace/text-generation-webui/user_data/models/
+```
+
+## GGUF with vision
+
+- [Gemma 3 27b abliturated](https://huggingface.co/mlabonne/gemma-3-27b-it-abliterated-GGUF)
 
 ```bash
 hf download mlabonne/gemma-3-27b-it-abliterated-GGUF gemma-3-27b-it-abliterated.q8_0.gguf --local-dir=/workspace/text-generation-webui/user_data/models/
-
 hf download mlabonne/gemma-3-27b-it-abliterated-GGUF mmproj-mlabonne_gemma-3-27b-it-abliterated-f16.gguf --local-dir=/workspace/text-generation-webui/user_data/mmproj/
+```
+
+
+- [Llame joycaption](https://huggingface.co/concedo/llama-joycaption-beta-one-hf-llava-mmproj-gguf)
+
+```bash
+hf download concedo/llama-joycaption-beta-one-hf-llava-mmproj-gguf Llama-Joycaption-Beta-One-Hf-Llava-Q8_0.gguf --local-dir=/workspace/text-generation-webui/user_data/models/
+hf download concedo/llama-joycaption-beta-one-hf-llava-mmproj-gguf llama-joycaption-beta-one-llava-mmproj-model-f16.gguf --local-dir=/workspace/text-generation-webui/user_data/mmproj/
 ```
 
 ## Transformers
@@ -42,6 +55,14 @@ hf download Orenguteng/Llama-3.1-8B-Lexi-Uncensored-V2 --local-dir=/workspace/te
 
 ```bash
 hf download mlabonne/Qwen3-14B-abliterated --local-dir=/workspace/text-generation-webui/user_data/models/qwen3)
+```
+
+## EXL3 models
+
+- [Qwen3-Coder](https://huggingface.co/ArtusDev/huihui-ai_Huihui-Qwen3-Coder-30B-A3B-Instruct-abliterated-EXL3)
+
+```bash
+hf download ArtusDev/huihui-ai_Huihui-Qwen3-Coder-30B-A3B-Instruct-abliterated-EXL3 --revision 8.0bpw_H8 --local-dir=/workspace/text-generation-webui/user_data/models/HuiHui-Qwen3
 ```
 
 

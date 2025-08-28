@@ -32,8 +32,18 @@ else
 	echo "⚠️ WARNING: HF_TOKEN is not set as an environment variable"
 fi
 
-# Start services
-if [[ ${RUNPOD_GPU_COUNT:-0} -gt 0 ]]; then
+# GPU detection
+HAS_GPU=0
+if [[ -n "${RUNPOD_GPU_COUNT:-}" && "${RUNPOD_GPU_COUNT:-0}" -gt 0 ]]; then
+  HAS_GPU=1
+elif command -v nvidia-smi >/dev/null 2>&1; then
+  nvidia-smi >/dev/null 2>&1 && HAS_GPU=1 || true
+elif [[ -n "${CUDA_VISIBLE_DEVICES:-}" && "${CUDA_VISIBLE_DEVICES}" != "-1" ]]; then
+  HAS_GPU=1
+fi
+
+# Run services
+if [[ "$HAS_GPU" -eq 1 ]]; then
     # Start code-server (HTTP port 9000)
     if [[ -n "$PASSWORD" ]]; then
         code-server /workspace --auth password --disable-telemetry --host 0.0.0.0 --bind-addr 0.0.0.0:9000 &
@@ -63,68 +73,68 @@ else
     echo "⚠️ WARNING: No GPU available, text-generation-webui, Code Server not started to limit memory use"
 fi
 
-# Function to download models if variables are set
+# --- Download helpers ---
 
 download_model_HF_GGUF() {
-    local model_var="$1"
-    local file_var="$2"
-
-    local model="${!model_var}"
-    local file="${!file_var}"
-
-    if [[ -n "$model" && -n "$file" ]]; then
-        echo "[INFO] Downloading GGUF model: $model ($file)"
-        hf download "$model" "$file" --local-dir "/workspace/text-generation-webui/user_data/models/"
-        sleep 1
-    fi
+  local model_var="$1" file_var="$2"
+  local model="${!model_var:-}" file="${!file_var:-}"
+  if [[ -n "$model" && -n "$file" ]]; then
+    echo "[INFO] Downloading GGUF model: $model ($file)"
+    hf download "$model" "$file" --local-dir "/workspace/text-generation-webui/user_data/models/"
+    sleep 1
+  fi
 }
 
 download_mmproj_HF_GGUF() {
-    local model_var="$1"
-    local file_var="$2"
-
-    local model="${!model_var}"
-    local file="${!file_var}"
-
-    if [[ -n "$model" && -n "$file" ]]; then
-        echo "[INFO] Downloading GGUF mmproj: $model ($file)"
-        hf download "$model" "$file" --local-dir "/workspace/text-generation-webui/user_data/mmproj/"
-        sleep 1
-    fi
+  local model_var="$1" file_var="$2"
+  local model="${!model_var:-}" file="${!file_var:-}"
+  if [[ -n "$model" && -n "$file" ]]; then
+    echo "[INFO] Downloading GGUF mmproj: $model ($file)"
+    hf download "$model" "$file" --local-dir "/workspace/text-generation-webui/user_data/mmproj/"
+    sleep 1
+  fi
 }
 
 download_model_HF() {
-    local model_var="$1"
-    local dest_dir_var="$2"
+  local model_var="$1" dest_dir_var="$2"
+  local model="${!model_var:-}" dest_dir="${!dest_dir_var:-}"
+  if [[ -n "$model" && -n "$dest_dir" ]]; then
+    echo "[INFO] Downloading model repo: $model -> $dest_dir"
+    hf download "$model" --local-dir "/workspace/text-generation-webui/user_data/models/$dest_dir/"
+    sleep 1
+  fi
+}
 
-    local model="${!model_var}"
-    local dest_dir="${!dest_dir_var}"
-
-    if [[ -n "$model" && -n "$dest_dir" ]]; then
-        echo "[INFO] Downloading model: $model -> $dest_dir"
-        hf download "$model" --local-dir "/workspace/text-generation-webui/user_data/models/$dest_dir/"
-        sleep 1
-    fi
+download_EXL_HF() {
+  local model_var="$1" revision_var="$2" dest_dir_var="$3"
+  local model="${!model_var:-}" revision="${!revision_var:-}" dest_dir="${!dest_dir_var:-}"
+  if [[ -n "$model" && -n "$revision" && -n "$dest_dir" ]]; then
+    echo "[INFO] Downloading EXL repo: $model (rev: $revision) -> $dest_dir"
+    hf download "$model" --revision "$revision" --local-dir "/workspace/text-generation-webui/user_data/models/$dest_dir/"
+    sleep 1
+  fi
 }
 
 echo "[INFO] Provisioning started"
 
+# GGUF (single files)
 for i in {1..6}; do
-    model_var="HF_MODEL_GGUF${i}"
-    file_var="HF_MODEL_GGUF_FILE${i}"
-    download_model_HF_GGUF "$model_var" "$file_var"
+  download_model_HF_GGUF "HF_MODEL_GGUF${i}" "HF_MODEL_GGUF_FILE${i}"
 done
 
+# mmproj (single files)
 for i in {1..6}; do
-    model_var="HF_MMPROJ_GGUF${i}"
-    file_var="HF_MMPROJ_GGUF_FILE${i}"
-    download_mmproj_HF_GGUF "$model_var" "$file_var"
+  download_mmproj_HF_GGUF "HF_MMPROJ_GGUF${i}" "HF_MMPROJ_GGUF_FILE${i}"
 done
 
+# Full repos (into subdirs)
 for i in {1..6}; do
-    model_var="HF_MODEL${i}"
-    dir_var="HF_MODEL_DIR${i}"
-    download_model_HF "$model_var" "$dir_var"
+  download_model_HF "HF_MODEL${i}" "HF_MODEL_DIR${i}"
+done
+
+# EXL repos with explicit revision
+for i in {1..6}; do
+  download_EXL_HF "HF_EXL${i}" "HF_EXL_REVISION${i}" "HF_EXL_DIR${i}"
 done
 
 echo "✅ Provisioning completed."
