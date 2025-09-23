@@ -25,31 +25,32 @@ for script in text-generation-webui-on-workspace.sh provisioning-on-workspace.sh
     fi
 done
 
-# Login to Hugging Face if token is provided
-if [[ -n "$HF_TOKEN" ]]; then
-    hf auth login --token "$HF_TOKEN"
-else
-	echo "⚠️ WARNING: HF_TOKEN is not set as an environment variable"
-fi
-
 # GPU detection
 HAS_GPU=0
 if [[ -n "${RUNPOD_GPU_COUNT:-}" && "${RUNPOD_GPU_COUNT:-0}" -gt 0 ]]; then
   HAS_GPU=1
+  echo "✅ [GPU DETECTED] Found via RUNPOD_GPU_COUNT=${RUNPOD_GPU_COUNT}"
 elif command -v nvidia-smi >/dev/null 2>&1; then
-  nvidia-smi >/dev/null 2>&1 && HAS_GPU=1 || true
+  if nvidia-smi >/dev/null 2>&1; then
+    HAS_GPU=1
+    GPU_MODEL=$(nvidia-smi --query-gpu=name --format=csv,noheader | xargs | sed 's/,/, /g')
+    echo " ✅ [GPU DETECTED] Found via nvidia-smi → Model(s): ${GPU_MODEL}"
+  fi
 elif [[ -n "${CUDA_VISIBLE_DEVICES:-}" && "${CUDA_VISIBLE_DEVICES}" != "-1" ]]; then
   HAS_GPU=1
+  echo "✅ [GPU DETECTED] Found via CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}"
+else
+  echo "⚠️ [NO GPU] Running on CPU only"
 fi
 
 # Run services
 if [[ "$HAS_GPU" -eq 1 ]]; then
     # Start code-server (HTTP port 9000)
     if [[ -n "$PASSWORD" ]]; then
-        code-server /workspace --auth password --disable-telemetry --host 0.0.0.0 --bind-addr 0.0.0.0:9000 &
+        code-server /workspace --auth password --disable-telemetry --disable-update-check --host 0.0.0.0 --bind-addr 0.0.0.0:9000 &
     else
-        echo "⚠️ WARNING: PASSWORD is not set as an environment variable"
-        code-server /workspace --disable-telemetry --host 0.0.0.0 --bind-addr 0.0.0.0:9000 &
+        echo "⚠️ WARNING: PASSWORD is not set as an environment variable use password in log"
+        code-server /workspace --disable-telemetry --disable-update-check --host 0.0.0.0 --bind-addr 0.0.0.0:9000 &
     fi
 	
 	sleep 5
@@ -67,7 +68,7 @@ if [[ "$HAS_GPU" -eq 1 ]]; then
 	sleep 5
 	
 	# Confirmation	
-	echo "[INFO] Code Server & text-generation-webui started"
+	echo "✅ [INFO] Code Server & text-generation-webui started"
 	
 else
     echo "⚠️ WARNING: No GPU available, text-generation-webui, Code Server not started to limit memory use"

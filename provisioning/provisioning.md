@@ -1,6 +1,6 @@
 # Manual provisioning
 
-## GGUF
+## GGUF llama.cpp
 
 - [Dolphin-Mistral Abliterated](https://huggingface.co/saukko/Abliterated-Dolphin3.0-R1-Mistral-24B-GGUF)
 
@@ -20,7 +20,7 @@ hf download DavidAU/Llama-3.2-8X3B-MOE-Dark-Champion-Instruct-uncensored-abliter
 hf download mlabonne/Daredevil-8B-abliterated-GGUF daredevil-8b-abliterated.Q8_0.gguf --local-dir=/workspace/text-generation-webui/user_data/models/
 ```
 
-## GGUF with vision
+## GGUF with Vision llama.cpp
 
 - [Gemma 3 27b abliturated](https://huggingface.co/mlabonne/gemma-3-27b-it-abliterated-GGUF)
 
@@ -28,7 +28,6 @@ hf download mlabonne/Daredevil-8B-abliterated-GGUF daredevil-8b-abliterated.Q8_0
 hf download mlabonne/gemma-3-27b-it-abliterated-GGUF gemma-3-27b-it-abliterated.q8_0.gguf --local-dir=/workspace/text-generation-webui/user_data/models/
 hf download mlabonne/gemma-3-27b-it-abliterated-GGUF mmproj-mlabonne_gemma-3-27b-it-abliterated-f16.gguf --local-dir=/workspace/text-generation-webui/user_data/mmproj/
 ```
-
 
 - [Llame joycaption](https://huggingface.co/concedo/llama-joycaption-beta-one-hf-llava-mmproj-gguf)
 
@@ -54,7 +53,7 @@ hf download Orenguteng/Llama-3.1-8B-Lexi-Uncensored-V2 --local-dir=/workspace/te
 - [Qwen3 abliturated](https://huggingface.co/mlabonne/Qwen3-14B-abliterated)
 
 ```bash
-hf download mlabonne/Qwen3-14B-abliterated --local-dir=/workspace/text-generation-webui/user_data/models/qwen3)
+hf download mlabonne/Qwen3-14B-abliterated --local-dir=/workspace/text-generation-webui/user_data/models/qwen3
 ```
 
 ## EXL3 models
