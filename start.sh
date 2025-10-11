@@ -140,5 +140,18 @@ done
 
 echo "✅ Provisioning completed."
 
+python - <<'PY'
+import torch, platform, triton, os
+print(f"Python: {platform.python_version()}")
+print(f"PyTorch: {torch.__version__}")
+print(f"Triton version: {triton.__version__}")
+print(f"CUDA available: {torch.cuda.is_available()}")
+if torch.cuda.is_available():
+    print(f"  ↳ CUDA runtime: {torch.version.cuda}")
+    print(f"  ↳ GPU(s): {[torch.cuda.get_device_name(i) for i in range(torch.cuda.device_count())]}")
+    print(f"  ↳ cuDNN: {torch.backends.cudnn.version()}")
+    print(f"Torch build info: {torch.__config__.show()}")
+PY
+
 # Keep the container running
 exec sleep infinity

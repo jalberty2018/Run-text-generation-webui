@@ -36,6 +36,14 @@ hf download concedo/llama-joycaption-beta-one-hf-llava-mmproj-gguf Llama-Joycapt
 hf download concedo/llama-joycaption-beta-one-hf-llava-mmproj-gguf llama-joycaption-beta-one-llava-mmproj-model-f16.gguf --local-dir=/workspace/text-generation-webui/user_data/mmproj/
 ```
 
+- [Qwen2.5-VL-7B-Instruct-abliterated](https://huggingface.co/mradermacher/Qwen2.5-VL-7B-Instruct-abliterated-GGUF)
+
+```bash
+hf download mradermacher/Qwen2.5-VL-7B-Instruct-abliterated-GGUF Qwen2.5-VL-7B-Instruct-abliterated.f16.gguf --local-dir=/workspace/text-generation-webui/user_data/models/
+
+hf download mradermacher/Qwen2.5-VL-7B-Instruct-abliterated-GGUF Qwen2.5-VL-7B-Instruct-abliterated.mmproj-f16.gguf --local-dir=/workspace/text-generation-webui/user_data/mmproj/
+```
+
 ## Transformers
 
 - [darkidol Uncensored](https://huggingface.co/aifeifei798/DarkIdol-Llama-3.1-8B-Instruct-1.2-Uncensored)

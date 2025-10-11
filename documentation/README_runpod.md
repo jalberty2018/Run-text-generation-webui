@@ -21,53 +21,33 @@
 
 | Token        | Environment Variable | Example | Required |
 |--------------|----------------------|---------|----------|
-| Hugging face  | `HF_TOKEN`           | token | ✅ Yes |
-| Code Server  | `PASSWORD`           | password | Optional |
+| Hugging face  | `HF_TOKEN`           | token | Optional  | 
+| Code Server  | `PASSWORD`           | password | ✅ Yes |
 | text-generation-webui       | `GRADIO_AUTH`        | user:password | Optional |
 
 ## 📦 **GGUF Model Downloads**
 
 | Model Type     | Hugging Face URL Variable | GGUF File Variable       |
 |----------------|---------------------------|---------------------------|
-| GGUF Model     | `HF_MODEL_GGUF1`          | `HF_MODEL_GGUF_FILE1`     |
-| GGUF Model     | `HF_MODEL_GGUF2`          | `HF_MODEL_GGUF_FILE2`     |
-| GGUF Model     | `HF_MODEL_GGUF3`          | `HF_MODEL_GGUF_FILE3`     |
-| GGUF Model     | `HF_MODEL_GGUF4`          | `HF_MODEL_GGUF_FILE4`     |
-| GGUF Model     | `HF_MODEL_GGUF5`          | `HF_MODEL_GGUF_FILE5`     |
-| GGUF Model     | `HF_MODEL_GGUF6`          | `HF_MODEL_GGUF_FILE6`     |
+| GGUF Model     | `HF_MODEL_GGUF[1-6]`          | `HF_MODEL_GGUF_FILE[1-6]`     |
 
 ## 📦 **MMPROJ Downloads (multi modality)**
 
 | Model Type     | Hugging Face URL Variable | GGUF File Variable       |
 |----------------|---------------------------|---------------------------|
-| GGUF MMPROJ     | `HF_MMPROJ_GGUF1`          | `HF_MMPROJ_GGUF_FILE1`     |
-| GGUF MMPROJ     | `HF_MMPROJ_GGUF2`          | `HF_MMPROJ_GGUF_FILE2`     |
-| GGUF MMPROJ     | `HF_MMPROJ_GGUF3`          | `HF_MMPROJ_GGUF_FILE3`     |
-| GGUF MMPROJ     | `HF_MMPROJ_GGUF4`          | `HF_MMPROJ_GGUF_FILE4`     |
-| GGUF MMPROJ     | `HF_MMPROJ_GGUF5`          | `HF_MMPROJ_GGUF_FILE5`     |
-| GGUF MMPROJ     | `HF_MMPROJ_GGUF6`          | `HF_MMPROJ_GGUF_FILE6`     |
+| GGUF MMPROJ     | `HF_MMPROJ_GGUF[1-6]`          | `HF_MMPROJ_GGUF_FILE[1-6]`     |
 
 ## 🤖 **Transformers Model Downloads**
 
 | Model Type              | Hugging Face URL Variable | Destination Subfolder Variable |
 |-------------------------|----------------------------|----------------------------------|
-| Transformers   | `HF_MODEL1`                | `HF_MODEL_DIR1`                 |
-| Transformers   | `HF_MODEL2`                | `HF_MODEL_DIR2`                 |
-| Transformers   | `HF_MODEL3`                | `HF_MODEL_DIR3`                 |
-| Transformers   | `HF_MODEL4`                | `HF_MODEL_DIR4`                 |
-| Transformers   | `HF_MODEL5`                | `HF_MODEL_DIR5`                 |
-| Transformers   | `HF_MODEL6`                | `HF_MODEL_DIR6`                 |
+| Transformers   | `HF_MODEL[1-6]`                | `HF_MODEL_DIR[1-6]`                 |
 
 ## 🤖 **EXL Model Downloads**
 
 | Model Type            |    Hugging Face URL Variable | Revision | Destination Subfolder Variable |
 |-------------------------|----------|------------------|----------------------------------|
-| EXL    | `HF_EXL1`  |  `HF_EXL_REVISION1`  |  `HF_EXL_DIR1`                 |
-| EXL    | `HF_EXL2`  |  `HF_EXL_REVISION2`  |  `HF_EXL_DIR2`                 |
-| EXL    | `HF_EXL3`  |  `HF_EXL_REVISION3`  |  `HF_EXL_DIR3`                 |
-| EXL    | `HF_EXL4`  |  `HF_EXL_REVISION4`  |  `HF_EXL_DIR4`                 |
-| EXL    | `HF_EXL5`  |  `HF_EXL_REVISION5`  |  `HF_EXL_DIR5`                 |
-| EXL    | `HF_EXL6`  |  `HF_EXL_REVISION6`  |  `HF_EXL_DIR6`                 |
+| EXL    | `HF_EXL1`  |  `HF_EXL_REVISION[1-6]`  |  `HF_EXL_DIR[1-6]`                 |
 
 ## Connection options 
 
