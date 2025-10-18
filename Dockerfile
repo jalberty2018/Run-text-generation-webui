@@ -13,6 +13,9 @@ COPY --chmod=644 documentation/README_runpod.md /README.md
 # Copy provisioning with appropriate permissions
 COPY --chmod=644 provisioning/ /provisioning
 
+# Install code-server
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+
 # Install oobabooga/text-generation-webui
 RUN --mount=type=cache,target=/root/.cache/git \
     git clone https://github.com/oobabooga/text-generation-webui
@@ -22,11 +25,6 @@ WORKDIR /text-generation-webui
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install --no-cache-dir "huggingface_hub[cli]" timm \
     -r requirements/full/requirements.txt
-
-WORKDIR /	
-
-# Install code-server
-RUN curl -fsSL https://code-server.dev/install.sh | sh
 
 # Set workspace directory
 WORKDIR /workspace
