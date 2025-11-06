@@ -13,12 +13,12 @@ COPY --chmod=644 documentation/README_runpod.md /README.md
 # Copy provisioning with appropriate permissions
 COPY --chmod=644 provisioning/ /provisioning
 
-# Install code-server
-RUN curl -fsSL https://code-server.dev/install.sh | sh
-
 # Install oobabooga/text-generation-webui
 RUN --mount=type=cache,target=/root/.cache/git \
     git clone https://github.com/oobabooga/text-generation-webui
+
+# Install code-server
+RUN curl -fsSL https://code-server.dev/install.sh | sh
 
 WORKDIR /text-generation-webui
 
@@ -34,6 +34,12 @@ ENV HF_HOME=/workspace/cache
 
 # Expose ports for Gradio, code-server
 EXPOSE 7860 9000 
+
+# Labels
+LABEL org.opencontainers.image.title="oobabooga text generation webuiwith" \
+      org.opencontainers.image.description="VLM and LLM inference" \
+      org.opencontainers.image.source="https://hub.docker.com/r/ls250824/run-text-generation-webui" \
+      org.opencontainers.image.licenses="MIT"
 
 # Test
 RUN python -c "import torch, torchvision, torchaudio, triton; \
