@@ -65,15 +65,14 @@ WORKDIR /
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
 # Install oobabooga
-RUN git clone --depth=1 https://github.com/oobabooga/textgen.git /workspace/textgen
+RUN git clone --depth=1 https://github.com/oobabooga/textgen.git /textgen
 
 WORKDIR /textgen
 
 # Requirements installeren, maar torch zelf niet opnieuw laten overschrijven
 RUN cp requirements/full/requirements.txt /tmp/requirements-full.txt && \
-    tr ' ' '\n' < /tmp/requirements-full.txt > /tmp/requirements-lines.txt && \
-    grep -v -E '^(torch|torchvision|torchaudio)(==|$)' \
-      /tmp/requirements-lines.txt > /tmp/requirements-patched.txt && \
+    grep -v -E '^[[:space:]]*(torch|torchvision|torchaudio|flash-attn|flash_attn|exllamav3)([<>=!~ ]|$)' \
+      /tmp/requirements-full.txt > /tmp/requirements-patched.txt && \
     python -m pip install -r /tmp/requirements-patched.txt
 
 # Set working directory
@@ -104,8 +103,12 @@ LABEL org.opencontainers.image.title="oobabooga textgen" \
       org.opencontainers.image.licenses="MIT"
 
 # Test
-RUN python -c "import torch, torchvision, torchaudio, triton; \
-print(f'Torch: {torch.__version__}\\nTorchvision: {torchvision.__version__}\\nTorchaudio: {torchaudio.__version__}\\nTriton: {triton.__version__}\\nCUDA available: {torch.cuda.is_available()}\\nCUDA version: {torch.version.cuda}')"
+RUN python - <<'PY'
+import torch
+print("torch:", torch.__version__)
+print("cuda build:", torch.version.cuda)
+print("cuda available:", torch.cuda.is_available())
+PY
 
 # Start script
 CMD [ "/start.sh" ]
