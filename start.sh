@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "[INFO] Pod run-text-generation-webui started"
+echo "[INFO] Pod run-textgen started"
 echo "ℹ️ Wait until the message 🎉 Provisioning done 🎉. is displayed"
 
 # Enable SSH if PUBLIC_KEY is set
@@ -23,7 +23,7 @@ fi
 
 # Move necessary files to workspace
 echo "ℹ️ [Moving necessary files to workspace] enabling rebooting pod without data loss"
-for script in text-generation-webui-on-workspace.sh provisioning-on-workspace.sh readme-on-workspace.sh; do
+for script in textgen-on-workspace.sh provisioning-on-workspace.sh readme-on-workspace.sh; do
     if [ -f "/$script" ]; then
         echo "Executing $script..."
         "/$script"
@@ -92,12 +92,12 @@ else
   echo "⚠️ Python not found – assuming no CUDA"
 fi
 
-# Start text-generation-webui (HTTP port 7860)
+# Start textgen (HTTP port 7860)
 
 if [[ "$HAS_CUDA" -eq 1 ]]; then  	
     echo "✅ Gradio service starting (CUDA available)"
 
-	cd /workspace/text-generation-webui/
+	cd /workspace/textgen/
 	
 	if [[ -n "$GRADIO_AUTH" ]]; then
        python3 server.py --gradio-auth "$GRADIO_AUTH" --listen &
@@ -109,7 +109,7 @@ if [[ "$HAS_CUDA" -eq 1 ]]; then
 	sleep 5
 	
 	# Confirmation	
-	echo "🎉 text-generation-webui started"
+	echo "🎉 textgen started"
 	
 else
     echo "❌ ERROR: PyTorch CUDA driver mismatch or unavailable, Gradio not started"
@@ -122,7 +122,7 @@ download_model_HF_GGUF() {
   local model="${!model_var:-}" file="${!file_var:-}"
   if [[ -n "$model" && -n "$file" ]]; then
     echo "ℹ️ [Download] GGUF model: $model ($file)"
-    hf download "$model" "$file" --local-dir "/workspace/text-generation-webui/user_data/models/"
+    hf download "$model" "$file" --local-dir "/workspace/textgen/user_data/models/"
     sleep 1
   fi
 }
@@ -132,7 +132,7 @@ download_mmproj_HF_GGUF() {
   local model="${!model_var:-}" file="${!file_var:-}"
   if [[ -n "$model" && -n "$file" ]]; then
     echo "ℹ️ [Download] GGUF mmproj: $model ($file)"
-    hf download "$model" "$file" --local-dir "/workspace/text-generation-webui/user_data/mmproj/"
+    hf download "$model" "$file" --local-dir "/workspace/textgen/user_data/mmproj/"
     sleep 1
   fi
 }
@@ -142,7 +142,7 @@ download_model_HF() {
   local model="${!model_var:-}" dest_dir="${!dest_dir_var:-}"
   if [[ -n "$model" && -n "$dest_dir" ]]; then
     echo "ℹ️ [Download] model repo: $model -> $dest_dir"
-    hf download "$model" --local-dir "/workspace/text-generation-webui/user_data/models/$dest_dir/"
+    hf download "$model" --local-dir "/workspace/textgen/user_data/models/$dest_dir/"
     sleep 1
   fi
 }
@@ -152,7 +152,7 @@ download_EXL_HF() {
   local model="${!model_var:-}" revision="${!revision_var:-}" dest_dir="${!dest_dir_var:-}"
   if [[ -n "$model" && -n "$revision" && -n "$dest_dir" ]]; then
     echo "ℹ️ [Download] EXL repo: $model (rev: $revision) -> $dest_dir"
-    hf download "$model" --revision "$revision" --local-dir "/workspace/text-generation-webui/user_data/models/$dest_dir/"
+    hf download "$model" --revision "$revision" --local-dir "/workspace/textgen/user_data/models/$dest_dir/"
     sleep 1
   fi
 }
@@ -222,7 +222,7 @@ if [[ "$HAS_PROVISIONING" -eq 1 ]]; then
 	  else
 	    declare -A SERVICES=(
 	      ["Code-Server"]=9000
-	      ["text-generation-webui"]=7860
+	      ["textgen"]=7860
 	    )
 	
 	    # Local health checks (inside the pod)
