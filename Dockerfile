@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.7
-FROM ls250824/pytorch-cuda-ubuntu-runtime:05072025 AS base
+FROM ls250824/pytorch-cuda-ubuntu-runtime:01072025 AS base
 
 # Set working directory
 WORKDIR /

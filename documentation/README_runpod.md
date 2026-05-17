@@ -22,7 +22,7 @@
 | Token        | Environment Variable | Example | Required |
 |--------------|----------------------|---------|----------|
 | Hugging face  | `HF_TOKEN`           | token | Optional  | 
-| Code Server  | `PASSWORD`           | password | ✅ Yes |
+| Code Server  | `PASSWORD`           | password | Optional |
 | text-generation-webui       | `GRADIO_AUTH`        | user:password | Optional |
 
 ## 📦 **GGUF Model Downloads**

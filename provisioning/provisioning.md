@@ -29,11 +29,28 @@ hf download mlabonne/gemma-3-27b-it-abliterated-GGUF gemma-3-27b-it-abliterated.
 hf download mlabonne/gemma-3-27b-it-abliterated-GGUF mmproj-mlabonne_gemma-3-27b-it-abliterated-f16.gguf --local-dir=/workspace/text-generation-webui/user_data/mmproj/
 ```
 
+- [Qwen3 VL 30B](https://huggingface.co/steampunque/Qwen3-VL-30B-A3B-Instruct-Hybrid-GGUF/tree/main)
+
+```bash
+hf download steampunque/Qwen3-VL-30B-A3B-Instruct-Hybrid-GGUF Qwen3-VL-30B-A3B-Instruct.Q4_K_H.gguf --local-dir=/workspace/text-generation-webui/user_data/models/
+
+hf download steampunque/Qwen3-VL-30B-A3B-Instruct-Hybrid-GGUF Qwen3-VL-30B-A3B-Instruct.mmproj.gguf --local-dir=/workspace/text-generation-webui/user_data/mmproj/ 
+```
+
 - [Llame joycaption](https://huggingface.co/concedo/llama-joycaption-beta-one-hf-llava-mmproj-gguf)
 
 ```bash
 hf download concedo/llama-joycaption-beta-one-hf-llava-mmproj-gguf Llama-Joycaption-Beta-One-Hf-Llava-Q8_0.gguf --local-dir=/workspace/text-generation-webui/user_data/models/
 hf download concedo/llama-joycaption-beta-one-hf-llava-mmproj-gguf llama-joycaption-beta-one-llava-mmproj-model-f16.gguf --local-dir=/workspace/text-generation-webui/user_data/mmproj/
+```
+
+- [Qwen3-VL-8B Instruct abliturated](https://huggingface.co/huihui-ai/Huihui-Qwen3-VL-8B-Instruct-abliterated)
+
+```bash
+hf download huihui-ai/Huihui-Qwen3-VL-8B-Instruct-abliterated GGUF/ggml-model-f16.gguf --local-di
+r /workspace/ComfyUI/models/LLM/
+
+
 ```
 
 - [Qwen2.5-VL-7B-Instruct-abliterated](https://huggingface.co/mradermacher/Qwen2.5-VL-7B-Instruct-abliterated-GGUF)
@@ -42,6 +59,12 @@ hf download concedo/llama-joycaption-beta-one-hf-llava-mmproj-gguf llama-joycapt
 hf download mradermacher/Qwen2.5-VL-7B-Instruct-abliterated-GGUF Qwen2.5-VL-7B-Instruct-abliterated.f16.gguf --local-dir=/workspace/text-generation-webui/user_data/models/
 
 hf download mradermacher/Qwen2.5-VL-7B-Instruct-abliterated-GGUF Qwen2.5-VL-7B-Instruct-abliterated.mmproj-f16.gguf --local-dir=/workspace/text-generation-webui/user_data/mmproj/
+```
+
+```bash
+hf download Phil2Sat/Qwen-Image-Edit-Rapid-AIO-GGUF Qwen2.5-VL-7B-Instruct-abliterated/Qwen2.5-VL-7B-Instruct-abliterated.Q8_0.gguf --local-dir=/workspace/text-generation-webui/user_data/models/
+
+hf download Phil2Sat/Qwen-Image-Edit-Rapid-AIO-GGUF Qwen2.5-VL-7B-Instruct-abliterated/Qwen2.5-VL-7B-Instruct-abliterated.mmproj-f16.gguf --local-dir=/workspace/text-generation-webui/user_data/mmproj/
 ```
 
 ## Transformers
@@ -58,10 +81,16 @@ hf download aifeifei798/DarkIdol-Llama-3.1-8B-Instruct-1.2-Uncensored --local-di
 hf download Orenguteng/Llama-3.1-8B-Lexi-Uncensored-V2 --local-dir=/workspace/text-generation-webui/user_data/models/llama-lexi
 ```
 
-- [Qwen3 abliturated](https://huggingface.co/mlabonne/Qwen3-14B-abliterated)
+- [Qwen3 14B abliturated](https://huggingface.co/mlabonne/Qwen3-14B-abliterated)
 
 ```bash
 hf download mlabonne/Qwen3-14B-abliterated --local-dir=/workspace/text-generation-webui/user_data/models/qwen3
+```
+
+- [Qwen3 VL 8B abliturated](https://huggingface.co/wangkanai/qwen3-vl-8b-instruct)
+
+```bash
+hf download wangkanai/qwen3-vl-8b-instruct qwen3-vl-8b-instruct-abliterated.safetensors --local-dir=/workspace/text-generation-webui/user_data/models/qwen3vl
 ```
 
 ## EXL3 models

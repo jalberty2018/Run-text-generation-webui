@@ -1,4 +1,4 @@
-# Run text-generation-webui on [RunPod.io](https://runpod.io?ref=se4tkc5o)
+# Run text-generation-webui on RunPod
 
 ## This pod downloads models as specified in the **environment variables**
 
@@ -14,11 +14,7 @@
 - **Storage**:  
   - **Volume**: 80GB (`/workspace`)  
   - **Pod Volume**: 5Gb  
-
-## Ready to start template  
-  
-👉 [**One-click Deploy on RunPod**](https://console.runpod.io/deploy?template=u62v7rqcqw&ref=se4tkc5o)  
- 
+   
 ## Environment Variables  
 
 ### **Authentication Tokens**  
@@ -26,7 +22,7 @@
 | Token        | Environment Variable | Example | Required |
 |--------------|----------------------|---------|----------|
 | Hugging face  | `HF_TOKEN`           | token | Optional  | 
-| Code Server  | `PASSWORD`           | password | ✅ Yes |
+| Code Server  | `PASSWORD`           | password | Optional |
 | text-generation-webui       | `GRADIO_AUTH`        | user:password | Optional |
 
 ## 📦 **GGUF Model Downloads**

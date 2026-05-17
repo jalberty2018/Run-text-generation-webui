@@ -1,4 +1,4 @@
-# Run text-generation-webui on [RunPod.io](https://runpod.io?ref=se4tkc5o)
+# Run text-generation-webui on RunPod
 
 [![Docker Image Version](https://img.shields.io/docker/v/ls250824/run-text-generation-webui)](https://hub.docker.com/r/ls250824/run-text-generation-webui)
 
@@ -9,10 +9,6 @@
   - **Code server** authentication (not possible to switch off). 
   - **Hugging Face** tokens for model access.
   - **text-generation-webui** gradio authentication.  
-
-## 📦 Template Deployment
-
-👉 [**One-click Deploy on RunPod**](https://console.runpod.io/deploy?template=u62v7rqcqw&ref=se4tkc5o)
 
 ## Hardware Requirements  
  
@@ -42,7 +38,7 @@ docker pull ls250824/run-text-generation-webui:<version>
 | Token        | Environment Variable | Example | Required |
 |--------------|----------------------|---------|----------|
 | Hugging face  | `HF_TOKEN`           | token | Optional  | 
-| Code Server  | `PASSWORD`           | password | ✅ Yes |
+| Code Server  | `PASSWORD`           | password | Optional |
 | text-generation-webui       | `GRADIO_AUTH`        | user:password | Optional |
 
 ## 📦 **GGUF Model Downloads**
